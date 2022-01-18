@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Camera.gd" type="Script" id=2]
+[ext_resource path="res://ObjectPhysics.gd" type="Script" id=3]
+[ext_resource path="res://CollisionSurfaces.glb" type="PackedScene" id=4]
+
+[sub_resource type="PhysicsMaterial" id=14]
+friction = 0.0
+
+[sub_resource type="SphereShape" id=12]
+
+[sub_resource type="SphereMesh" id=17]
+
+[sub_resource type="PhysicsMaterial" id=15]
+friction = 0.0
+
+[sub_resource type="CylinderShape" id=8]
+
+[sub_resource type="CylinderMesh" id=18]
+
+[sub_resource type="CylinderShape" id=19]
+
+[sub_resource type="CylinderMesh" id=20]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="CollisionSurfaces" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 5 )
+
+[node name="Sphere" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0 )
+physics_material_override = SubResource( 14 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Sphere"]
+shape = SubResource( 12 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Sphere/CollisionShape"]
+mesh = SubResource( 17 )
+material/0 = null
+
+[node name="Cylinder90" type="RigidBody" parent="."]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -10, 0.5, 0 )
+physics_material_override = SubResource( 15 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cylinder90"]
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Cylinder90/CollisionShape"]
+mesh = SubResource( 18 )
+material/0 = null
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.828031, -0.154206, 0.53906, -0.560682, -0.227736, 0.796098, 0, -0.961435, -0.275033, 36.999, 5.544, 0 )
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="Cylinder" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cylinder"]
+shape = SubResource( 19 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Cylinder/CollisionShape"]
+mesh = SubResource( 20 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="Cylinder"]
+transform = Transform( 0.707107, -0.296015, 0.642164, 0, 0.908158, 0.418628, -0.707107, -0.296015, 0.642164, 15, 3.86, 5 )
+near = 1.0
+far = 3000.0
+script = ExtResource( 2 )
