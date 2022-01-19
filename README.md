@@ -1,21 +1,41 @@
 # godot-bumpy-sphere
 Demo of unwanted bumpy spherical physics in Godot Engine 3.4
 
-This demo has one sphere and two cylinders moving side by side on a flat service. The cylinder that is sitting flat on the surface seems to have been stabilized by the 'Smooth Trimesh Collision' option, but anything that rotates (sphere, cylider on its side) hits the collision mesh boundaries and bounces. Rotation seems to be important for the bounces to happen. If friction is set to 0, then all the shapes perform exactly the same.
+This demo has one sphere and two cylinders moving side by side on a flat service. The cylinder that is sitting flat on the surface seems to have been stabilized by the 'Smooth Trimesh Collision' option, but anything that rotates (sphere, cylider on its side) hits the collision mesh boundaries and bounces. Rotation seems to be important for the bounces to happen. If friction is set to 0, then all the shapes perform exactly the same. 
 
 ## Notes
 * No collision surfaces are rotated or resized, only very slightly transformed.
 * RigidBody -> CollisionShape -> MeshInstance node hierarchy with as few manual changes as possible.
 
-# Setup
-#### Project -> Project Settings ->
-* 'Physics Engine': Bullet
-* 'Smooth Trimesh Collision': On
-* 'Physics Fps': 60
-#### Debug ->
-* Visible Collision Shapes
 
-# Toggles
+## Videos
+
+### Defaults Only
+
+https://user-images.githubusercontent.com/6625903/150038528-f5640487-7de2-4e07-8c62-c95e47b282a8.mp4
+
+### No Friction
+
+https://user-images.githubusercontent.com/6625903/150038572-cc877790-d0e0-47e7-8738-aaa05d233139.mp4
+
+# Run Locally
+
+1. Download Source
+   ```
+   git clone git@github.com:broag/godot-bumpy-sphere.git && cd godot-bumpy-sphere
+   ```
+2. Install GODOT 3.4
+3. Import GODOT godot-bumpy-sphere project
+4. Verify Project Settings
+   Navigate to **Project -> Project Settings** in Godot
+   * 'Physics Engine': Bullet
+   * 'Smooth Trimesh Collision': On
+   * 'Physics Fps': 60
+4. Set Visible Collision Shapes
+   Click **Debug -> Visible Collision Shapes**
+5. Click Run Arrow
+
+# Physics Toggles
 ## Godot Engine Toggles
 * Physics Engine:
   * 'Physics Engine' Godot Physics - All objects bump on collision lines. Not tested with other Object Physics Toggles besides defaults.
